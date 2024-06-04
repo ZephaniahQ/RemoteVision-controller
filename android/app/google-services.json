@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "539847385705",
+    "project_id": "remotevision-b5796",
+    "storage_bucket": "remotevision-b5796.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:539847385705:android:9bfb4c4709009cc4af38f8",
+        "android_client_info": {
+          "package_name": "com.example.remotevision"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRSIf3Ap6-wV1yWdB_8raNfANksse08cM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:539847385705:android:97c0e38d5213fb07af38f8",
+        "android_client_info": {
+          "package_name": "com.example.remotevision_controller"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRSIf3Ap6-wV1yWdB_8raNfANksse08cM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
