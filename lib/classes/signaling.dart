@@ -19,15 +19,11 @@ class Signaling {
     ]
   };
 
-  Future<void> openUserMedia(
-      RTCVideoRenderer localRenderer, RTCVideoRenderer remoteRenderer) async {
-    await localRenderer.initialize();
+  Future<void> openUserMedia(RTCVideoRenderer remoteRenderer) async {
     await remoteRenderer.initialize();
-
-    var stream = await navigator.mediaDevices
-        .getUserMedia({'video': true, 'audio': true});
-    localRenderer.srcObject = stream;
-    localStream = stream;
+    MediaStream _remoteStream;
+    _remoteStream = await createLocalMediaStream('key');
+    remoteStream = _remoteStream;
   }
 
   Future<void> joinRoom(String roomId, RTCVideoRenderer remoteRenderer) async {

@@ -19,15 +19,22 @@ class MyHomePageState extends State<HomePage> {
   String? username;
 
   Signaling signaling = Signaling();
+  MediaStream? remoteStream;
   final RTCVideoRenderer _remoteRenderer = RTCVideoRenderer();
+  //final RTCVideoRenderer _localRenderer = RTCVideoRenderer();
   TextEditingController textController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
     _loadUsername();
-    _remoteRenderer.initialize();
+    _iniWebRTC();
     _findAndJoinRoom();
+  }
+
+  _iniWebRTC() async {
+    await _remoteRenderer.initialize();
+    await signaling.openUserMedia(_remoteRenderer);
   }
 
   Future<void> _loadUsername() async {
@@ -51,7 +58,9 @@ class MyHomePageState extends State<HomePage> {
     if (rooms.docs.isNotEmpty) {
       String roomId = rooms.docs.first.id;
       await signaling.joinRoom(roomId, _remoteRenderer);
-
+      setState(() {
+        _remoteRenderer;
+      });
       Fluttertoast.showToast(
         msg: 'Joined room with ID: $roomId',
         toastLength: Toast.LENGTH_SHORT,
@@ -136,9 +145,9 @@ class MyHomePageState extends State<HomePage> {
           _welcomeText(),
           const SizedBox(height: 20.0),
           _controlRow(),
-          const SizedBox(height: 20.0),
+          //const SizedBox(height: 20.0),
           Expanded(child: RTCVideoView(_remoteRenderer)),
-          //const SizedBox(height: 30),
+          const SizedBox(height: 30),
         ],
       ),
     );
